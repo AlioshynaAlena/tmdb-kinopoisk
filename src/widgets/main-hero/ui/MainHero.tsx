@@ -13,7 +13,6 @@ export function MainHero({ backdropUrl }: Props) {
         backgroundImage: backdropUrl ? `url(${backdropUrl})` : undefined,
       }}
     >
-      {/* затемняющий слой */}
       <div className={styles.overlay} />
 
       <div className={styles.content}>

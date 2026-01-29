@@ -27,7 +27,6 @@ export function MainPage() {
     upcomingLoading;
 
 
-  // 🔹 Берём случайный фильм из popular для фона
   const randomMovie = popularData?.results?.[
     Math.floor(Math.random() * (popularData?.results?.length || 1))
     ];

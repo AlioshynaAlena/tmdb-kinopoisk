@@ -5,6 +5,9 @@ import {MainPage} from "@/pages/main/ui/MainPage.tsx";
 import {
   CategoryMoviesPage
 } from "@/pages/category-movies/ui/CategoryMoviesPage.tsx";
+import {
+  FilteredMoviesPage
+} from "@/pages/filtered-movies/ui/FilteredMoviesPage.tsx";
 
 
 export const router = createBrowserRouter([
@@ -14,7 +17,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <MainPage /> },
       { path: routes.category(":category"), element: <CategoryMoviesPage /> },
-      // { path: routes.filtered(), element: <FilteredMoviesPage /> },
+      { path: routes.filtered(), element: <FilteredMoviesPage /> },
       // { path: routes.search(), element: <SearchPage /> },
       // { path: routes.favorites(), element: <FavoritesPage /> },
       // { path: routes.movie(":movieId"), element: <MovieDetailsPage /> },
