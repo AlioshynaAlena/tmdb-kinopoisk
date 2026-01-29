@@ -8,6 +8,7 @@ import {
 import {
   FilteredMoviesPage
 } from "@/pages/filtered-movies/ui/FilteredMoviesPage.tsx";
+import {MovieDetailsPage} from "@/pages/movie-details/ui/MovieDetailsPage.tsx";
 
 
 export const router = createBrowserRouter([
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
       { path: routes.filtered(), element: <FilteredMoviesPage /> },
       // { path: routes.search(), element: <SearchPage /> },
       // { path: routes.favorites(), element: <FavoritesPage /> },
-      // { path: routes.movie(":movieId"), element: <MovieDetailsPage /> },
+      { path: routes.movie(":movieId"), element: <MovieDetailsPage /> },
       // { path: "*", element: <NotFoundPage /> },
     ],
   },
