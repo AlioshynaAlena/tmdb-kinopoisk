@@ -1,11 +1,11 @@
 import { useCategoryMovies } from "@/shared/api/hooks/useCategoryMovies";
-import {MovieSection} from "@/entities/movie/ui/MovieSection/MovieSection.tsx";
+import {MovieSection} from "@/widgets/movies-section/ui/MovieSection.tsx";
 import {MainHero} from "@/widgets/main-hero/ui/MainHero.tsx";
 import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts";
+import {
+  MoviesSectionSkeleton
+} from "@/widgets/movies-section/ui/MoviesSectionSkeleton.tsx";
 
-
-// если у тебя есть skeleton для секции — можно подключить
-// import { MoviesSectionSkeleton } from "@/widgets/movies-section/ui/MoviesSectionSkeleton";
 
 export function MainPage() {
   const { data: popularData, isLoading: popularLoading } = useCategoryMovies("popular", { page: 1 });
@@ -40,15 +40,8 @@ export function MainPage() {
     <MainHero backdropUrl={backdropUrl} />
     <section>
       {isSectionLoading ? (
-        // 🔹 ВАРИАНТ 1 — пока без skeleton, просто пусто
-        // <p>Loading...</p>
 
-        // 🔹 ВАРИАНТ 2 — если есть MoviesSectionSkeleton (рекомендую позже)
-        sections.map((section) => (
-          <div key={section.category} style={{ marginBottom: "32px" }}>
-            <p style={{ opacity: 0.5 }}>{section.title}</p>
-          </div>
-        ))
+        <MoviesSectionSkeleton count={4} cardsPerRow={6} />
       ) : (
         sections.map((section) => (
           <MovieSection
