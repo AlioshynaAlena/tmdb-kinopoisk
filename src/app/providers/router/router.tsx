@@ -9,6 +9,7 @@ import {
   FilteredMoviesPage
 } from "@/pages/filtered-movies/ui/FilteredMoviesPage.tsx";
 import {MovieDetailsPage} from "@/pages/movie-details/ui/MovieDetailsPage.tsx";
+import {SearchPage} from "@/pages/search/ui/SearchPage.tsx";
 
 
 export const router = createBrowserRouter([
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
       { index: true, element: <MainPage /> },
       { path: routes.category(":category"), element: <CategoryMoviesPage /> },
       { path: routes.filtered(), element: <FilteredMoviesPage /> },
-      // { path: routes.search(), element: <SearchPage /> },
+      { path: routes.search(), element: <SearchPage /> },
       // { path: routes.favorites(), element: <FavoritesPage /> },
       { path: routes.movie(":movieId"), element: <MovieDetailsPage /> },
       // { path: "*", element: <NotFoundPage /> },
