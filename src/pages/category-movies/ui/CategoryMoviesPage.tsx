@@ -34,19 +34,16 @@ export function CategoryMoviesPage() {
   const params = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // category из URL
+
   const category: Category = isCategory(params.category) ? params.category : "popular";
 
-  // page из query ?page=1
   const pageFromUrl = Number(searchParams.get("page") ?? "1");
   const safePage = Number.isFinite(pageFromUrl) && pageFromUrl > 0 ? pageFromUrl : 1;
 
   const [page, setPage] = useState<number>(safePage);
 
-  // держим page синхронно с URL если пользователь обновил/вставил ссылку
+
   if (page !== safePage) {
-    // аккуратно: без бесконечного цикла — но это ок в данном простом кейсе
-    // если хочешь строго — вынесем в useEffect
     setPage(safePage);
   }
 
@@ -62,7 +59,7 @@ export function CategoryMoviesPage() {
   };
 
   const handleChangeCategory = (next: Category) => {
-    // при смене категории сбрасываем страницу на 1
+
     navigate(`/category/${next}?page=1`);
   };
 

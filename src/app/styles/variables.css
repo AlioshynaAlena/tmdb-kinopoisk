@@ -1,0 +1,101 @@
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --text-muted: rgba(15, 23, 42, 0.75);
+  --border: rgba(15, 23, 42, 0.12);
+  --header-bg: rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b1220;
+  --text: #e5e7eb;
+  --text-muted: rgba(229, 231, 235, 0.75);
+  --border: rgba(255, 255, 255, 0.12);
+  --header-bg: rgba(17, 24, 39, 0.85);
+}
+:root[data-theme="light"] {
+  --footer-bg: #ffffff;
+  --footer-text: rgba(15, 23, 42, 0.7);
+  --footer-border: rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="dark"] {
+  --footer-bg: #0b1220;
+  --footer-text: rgba(229, 231, 235, 0.75);
+  --footer-border: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="light"] {
+  --card-bg: #ffffff;
+  --card-border: rgba(15, 23, 42, 0.12);
+  --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --card-shadow-hover: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+  --poster-bg: rgba(15, 23, 42, 0.06);
+
+  --title-color: #0f172a;
+  --text-muted: rgba(15, 23, 42, 0.7);
+}
+
+:root[data-theme="dark"] {
+  --card-bg: #111827;
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 14px 38px rgba(0, 0, 0, 0.55);
+
+  --poster-bg: rgba(255, 255, 255, 0.06);
+
+  --title-color: #e5e7eb;
+  --text-muted: rgba(229, 231, 235, 0.75);
+}
+
+:root[data-theme="light"] {
+  --section-title: #0f172a;
+  --section-muted: rgba(15, 23, 42, 0.7);
+
+  --btn-bg: rgba(15, 23, 42, 0.06);
+  --btn-bg-hover: rgba(15, 23, 42, 0.10);
+  --btn-border: rgba(15, 23, 42, 0.14);
+  --btn-text: rgba(15, 23, 42, 0.85);
+}
+
+:root[data-theme="dark"] {
+  --section-title: #e5e7eb;
+  --section-muted: rgba(229, 231, 235, 0.75);
+
+  --btn-bg: rgba(255, 255, 255, 0.08);
+  --btn-bg-hover: rgba(255, 255, 255, 0.12);
+  --btn-border: rgba(255, 255, 255, 0.16);
+  --btn-text: rgba(229, 231, 235, 0.9);
+}
+
+
+:root[data-theme="light"] {
+  --tabs-bg: rgba(15, 23, 42, 0.04);
+  --tabs-border: rgba(15, 23, 42, 0.12);
+
+  --tab-bg: transparent;
+  --tab-text: rgba(15, 23, 42, 0.75);
+
+  --tab-hover-bg: rgba(15, 23, 42, 0.08);
+
+  --tab-active-bg: #0f172a;
+  --tab-active-text: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --tabs-bg: rgba(255, 255, 255, 0.06);
+  --tabs-border: rgba(255, 255, 255, 0.12);
+
+  --tab-bg: transparent;
+  --tab-text: rgba(255, 255, 255, 0.75);
+
+  --tab-hover-bg: rgba(255, 255, 255, 0.12);
+
+  --tab-active-bg: rgba(255, 255, 255, 0.92);
+  --tab-active-text: #020617;
+}
+
+
+
+

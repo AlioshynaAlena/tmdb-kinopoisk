@@ -25,7 +25,6 @@ export function MovieCard({ movie }: Props) {
           <RatingBadge value={movie.vote_average} />
         </div>
 
-        {/* ✅ сердечко поверх постера */}
         <div className={styles.favorite}>
           <FavoriteButton movie={movie} />
         </div>

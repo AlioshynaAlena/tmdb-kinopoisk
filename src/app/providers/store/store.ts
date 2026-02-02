@@ -7,12 +7,14 @@ import {
   favoritesSlice,
 
 } from "@/features/favorites/model/favoritesSlice.ts";
+import {themeReducer, themeSlice} from "@/app/providers/theme/themeSlice.ts";
 
 export const store = configureStore({
   reducer: {
-    [baseApi.reducerPath]: baseApi.reducer,
+    [themeSlice.name]: themeReducer,
     filters: filtersReducer,
     [favoritesSlice.name]: favoritesReducer,
+    [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
 });

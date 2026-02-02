@@ -1,6 +1,14 @@
 import type { PropsWithChildren } from "react";
+import { useEffect } from "react";
+import { selectThemeMode } from "./themeSlice";
+import {useAppSelector} from "@/shared/api/hooks/useAppSelector.ts";
 
 export function ThemeProvider({ children }: PropsWithChildren) {
-  // Пока минимально. Потом подключишь themeSlice + localStorage.
+  const theme = useAppSelector(selectThemeMode);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
   return children;
 }
