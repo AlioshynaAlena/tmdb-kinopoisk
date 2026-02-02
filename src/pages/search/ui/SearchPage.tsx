@@ -53,10 +53,10 @@ export function SearchPage() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
+      <div className={styles.header}>
         <h1 className={styles.title}>Search</h1>
         {loading && <LinearProgress />}
-      </header>
+      </div>
 
       <SearchForm
         initialValue={query}
