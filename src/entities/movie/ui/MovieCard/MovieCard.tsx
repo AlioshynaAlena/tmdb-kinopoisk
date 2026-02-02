@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./MovieCard.module.css";
-import type {MovieListItem} from "@/entities/movie/model/types.ts";
-import {MoviePoster} from "@/entities/movie/ui/MoviePoster/MoviePoster.tsx";
-import {RatingBadge} from "@/entities/movie/ui/RatingBadge/RatingBadge.tsx";
-
+import type { MovieListItem } from "@/entities/movie/model/types";
+import { MoviePoster } from "@/entities/movie/ui/MoviePoster/MoviePoster";
+import { RatingBadge } from "@/entities/movie/ui/RatingBadge/RatingBadge";
+import { FavoriteButton } from "@/features/favorites/ui/FavoriteButton";
 
 type Props = {
   movie: MovieListItem;
@@ -12,34 +12,30 @@ type Props = {
 export function MovieCard({ movie }: Props) {
   const navigate = useNavigate();
 
-  const handleOpenDetails = () => {
+  const openDetails = () => {
     navigate(`/movie/${movie.id}`);
   };
 
   return (
-    <div className={styles.card}>
-      <div className={styles.posterWrapper} onClick={handleOpenDetails}>
-        <MoviePoster
-          posterPath={movie.poster_path}
-          title={movie.title}
-        />
+    <article className={styles.card} onClick={openDetails} role="button" tabIndex={0}>
+      <div className={styles.posterWrap}>
+        <MoviePoster posterPath={movie.poster_path} title={movie.title} />
 
         <div className={styles.rating}>
           <RatingBadge value={movie.vote_average} />
         </div>
+
+        {/* ✅ сердечко поверх постера */}
+        <div className={styles.favorite}>
+          <FavoriteButton movie={movie} />
+        </div>
       </div>
 
       <div className={styles.info}>
-        <h3
-          className={styles.title}
-          title={movie.title}
-          onClick={handleOpenDetails}
-        >
+        <h3 className={styles.title} title={movie.title}>
           {movie.title}
         </h3>
-
-        {/*<FavoriteButton movie={movie} />*/}
       </div>
-    </div>
+    </article>
   );
 }
