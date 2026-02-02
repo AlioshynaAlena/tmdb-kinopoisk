@@ -20,6 +20,12 @@
   color: var(--text);
 }
 
+.logoImage {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
 .nav {
   display: flex;
   gap: 12px;

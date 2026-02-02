@@ -4,6 +4,7 @@ import styles from "./Header.module.css";
 import { selectThemeMode, toggleThemeMode } from "@/app/providers/theme/themeSlice";
 import {useAppSelector} from "@/shared/api/hooks/useAppSelector.ts";
 import {useAppDispatch} from "@/shared/api/hooks/useAppDispatch.ts";
+import logo from "@/assets/vector/logo.svg";
 
 export function Header() {
   const themeMode = useAppSelector(selectThemeMode);
@@ -13,7 +14,7 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <NavLink to={routes.root()} className={styles.logo}>
-          TMDB
+          <img src={logo} alt="Logo" className={styles.logoImage} />
         </NavLink>
 
         <nav className={styles.nav}>
