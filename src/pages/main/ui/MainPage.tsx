@@ -29,9 +29,10 @@ export function MainPage() {
     upcomingLoading;
 
 
-  const randomMovie = popularData?.results?.[
-    Math.floor(Math.random() * (popularData?.results?.length || 1))
-    ];
+  const results = popularData?.results ?? [];
+  const seed = results.reduce((acc, m) => acc + m.id, 0);
+  const randomIndex = results.length > 0 ? seed % results.length : 0;
+  const randomMovie = results[randomIndex];
 
   const backdropUrl = randomMovie?.backdrop_path
     ? getImageUrl(randomMovie.backdrop_path, "w780")

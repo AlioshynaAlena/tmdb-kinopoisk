@@ -2,7 +2,7 @@ import s from "./FiltersPanel.module.css";
 import { useCallback } from "react";
 import { selectFilters } from "@/features/filters/model/selectors";
 import { resetFilters, updateFilters } from "@/features/filters/model/filtersSlice";
-import type { SortBy } from "@/entities/movie/model/types";
+import type { DiscoverParams, SortBy } from "@/entities/movie/model/types";
 import { useDebouncedValue } from "@/features/filters/lib/useDebouncedValue";
 import { SortSelect } from "@/features/filters/ui/SortSelect";
 import { RatingRange } from "@/features/filters/ui/RatingRange";
@@ -15,7 +15,7 @@ export function FiltersPanel() {
   const filters = useAppSelector(selectFilters);
 
   const update = useCallback(
-    (patch: any) => dispatch(updateFilters(patch)),
+    (patch: Partial<DiscoverParams>) => dispatch(updateFilters(patch)),
     [dispatch]
   );
 
@@ -39,6 +39,7 @@ export function FiltersPanel() {
       <SortSelect value={(filters.sort_by ?? "popularity.desc") as SortBy} onChange={handleSortChange} />
 
       <RatingRange
+        key={`${filters["vote_average.gte"] ?? 0}-${filters["vote_average.lte"] ?? 10}`}
         minRating={filters["vote_average.gte"] ?? 0}
         maxRating={filters["vote_average.lte"] ?? 10}
         onRatingChange={handleRatingChange}

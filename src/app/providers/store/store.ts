@@ -26,5 +26,5 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
 
-// @ts-ignore
+// @ts-expect-error - expose store for debugging in the browser
 window.store = store

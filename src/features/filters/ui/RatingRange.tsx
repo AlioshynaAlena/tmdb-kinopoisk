@@ -1,5 +1,5 @@
 import s from "./RatingRange.module.css";
-import { type ChangeEvent, useEffect, useState } from "react";
+import { type ChangeEvent, useState } from "react";
 
 type Props = {
   minRating: number;
@@ -10,11 +10,6 @@ type Props = {
 export const RatingRange = ({ minRating, maxRating, onRatingChange }: Props) => {
   const [min, setMin] = useState<number>(minRating);
   const [max, setMax] = useState<number>(maxRating);
-
-  useEffect(() => {
-    setMin(minRating);
-    setMax(maxRating);
-  }, [minRating, maxRating]);
 
   const handleMinChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);

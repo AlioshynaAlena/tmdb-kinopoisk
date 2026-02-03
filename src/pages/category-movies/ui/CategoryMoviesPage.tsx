@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -54,11 +54,14 @@ export function CategoryMoviesPage() {
   const totalPages = Math.min(data?.total_pages ?? 1, 500)
   const title = useMemo(() => getCategoryTitle(category), [category]);
 
-  const setPageInUrl = (nextPage: number) => {
-    const sp = new URLSearchParams(searchParams);
-    sp.set("page", String(nextPage));
-    setSearchParams(sp, { replace: true });
-  };
+  const setPageInUrl = useCallback(
+    (nextPage: number) => {
+      const sp = new URLSearchParams(searchParams);
+      sp.set("page", String(nextPage));
+      setSearchParams(sp, { replace: true });
+    },
+    [searchParams, setSearchParams]
+  );
 
   const handleChangeCategory = (next: Category) => {
     navigate(`/category/${next}?page=1`);
