@@ -10,7 +10,7 @@ export function FilteredMoviesPage() {
   const { data, isFetching } = useDiscoverMoviesQuery(filters);
 
   return (
-    <div className={styles.page}>
+    <div className={`container ${styles.page}`}>
       <FiltersPanel />
       <section className={styles.content}>
         {isFetching && <div>Loading...</div>}

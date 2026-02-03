@@ -42,7 +42,7 @@ export function MovieDetailsPage() {
 
   if (skip) {
     return (
-      <div className={styles.page}>
+      <div className={`container ${styles.page}`}>
         <button className={styles.back} type="button" onClick={() => navigate(-1)}>
           ← Back
         </button>
@@ -53,7 +53,7 @@ export function MovieDetailsPage() {
 
   if (error) {
     return (
-      <div className={styles.page}>
+      <div className={`container ${styles.page}`}>
         <button className={styles.back} type="button" onClick={() => navigate(-1)}>
           ← Back
         </button>
@@ -66,8 +66,7 @@ export function MovieDetailsPage() {
   if (loading) return <MovieDetailsSkeleton />
 
   return (
-
-    <div className={styles.page}>
+    <div className={`container ${styles.page}`}>
       <div className={styles.topRow}>
         <button className={styles.back} type="button" onClick={() => navigate(-1)}>
           Back

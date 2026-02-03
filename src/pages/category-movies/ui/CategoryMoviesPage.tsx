@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import styles from "./CategoryMoviesPage.module.css";
 import { useCategoryMovies } from "@/shared/api/hooks/useCategoryMovies";
@@ -29,6 +29,8 @@ function getCategoryTitle(category: Category) {
   }
 }
 
+const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n))
+
 export function CategoryMoviesPage() {
   const navigate = useNavigate();
   const params = useParams();
@@ -37,19 +39,14 @@ export function CategoryMoviesPage() {
 
   const category: Category = isCategory(params.category) ? params.category : "popular";
 
-  const pageFromUrl = Number(searchParams.get("page") ?? "1");
-  const safePage = Number.isFinite(pageFromUrl) && pageFromUrl > 0 ? pageFromUrl : 1;
+  const rawPage = searchParams.get("page");
+  const pageFromUrl = Number(rawPage ?? "1");
+  const page = Number.isFinite(pageFromUrl) ? clamp(Math.trunc(pageFromUrl), 1, 500) : 1;
 
-  const [page, setPage] = useState<number>(safePage);
-
-
-  if (page !== safePage) {
-    setPage(safePage);
-  }
 
   const { data, isLoading, isFetching } = useCategoryMovies(category, { page });
 
-  const totalPages = data?.total_pages ?? 1;
+  const totalPages = Math.min(data?.total_pages ?? 1, 500)
   const title = useMemo(() => getCategoryTitle(category), [category]);
 
   const setPageInUrl = (nextPage: number) => {
@@ -59,28 +56,32 @@ export function CategoryMoviesPage() {
   };
 
   const handleChangeCategory = (next: Category) => {
-
     navigate(`/category/${next}?page=1`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handlePrev = () => {
-    const next = Math.max(1, page - 1);
-    setPage(next);
-    setPageInUrl(next);
+    const nextPage = clamp(page - 1, 1, totalPages);
+    setPageInUrl(nextPage);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleNext = () => {
-    const next = Math.min(totalPages, page + 1);
-    setPage(next);
-    setPageInUrl(next);
+    const nextPage = clamp(page + 1, 1, totalPages);
+    setPageInUrl(nextPage);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const loading = isLoading || isFetching;
 
+  useEffect(() => {
+    if (rawPage == null) return;
+    const isInvalid = !Number.isFinite(pageFromUrl) || Math.trunc(pageFromUrl) !== page;
+    if (isInvalid) setPageInUrl(page);
+  }, [rawPage, pageFromUrl, page, setPageInUrl]);
+
   return (
-    <div className={styles.page}>
+    <div className={`container ${styles.page}`}>
       <div className={styles.tabs}>
         {CATEGORY_TABS.map((t) => {
           const active = t.value === category;

@@ -1,10 +1,12 @@
 import { useCategoryMovies } from "@/shared/api/hooks/useCategoryMovies";
+import styles from "./MainPage.module.css";
 import {MovieSection} from "@/widgets/movies-section/ui/MovieSection.tsx";
 import {MainHero} from "@/widgets/main-hero/ui/MainHero.tsx";
 import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts";
 import {
   MoviesSectionSkeleton
 } from "@/widgets/movies-section/ui/MoviesSectionSkeleton.tsx";
+
 
 
 export function MainPage() {
@@ -37,22 +39,22 @@ export function MainPage() {
 
   return (
     <>
-    <MainHero backdropUrl={backdropUrl} />
-    <section>
-      {isSectionLoading ? (
+      <MainHero backdropUrl={backdropUrl} />
 
-        <MoviesSectionSkeleton count={4} cardsPerRow={6} />
-      ) : (
-        sections.map((section) => (
-          <MovieSection
-            key={section.category}
-            title={section.title}
-            movies={section.movies}
-            category={section.category}
-          />
-        ))
-      )}
-    </section>
+      <section className={`container ${styles.sections}`}>
+        {isSectionLoading ? (
+          <MoviesSectionSkeleton count={4} cardsPerRow={6} />
+        ) : (
+          sections.map((section) => (
+            <MovieSection
+              key={section.category}
+              title={section.title}
+              movies={section.movies}
+              category={section.category}
+            />
+          ))
+        )}
+      </section>
     </>
   );
 }

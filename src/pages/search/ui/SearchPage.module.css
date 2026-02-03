@@ -9,7 +9,7 @@
   margin: 0;
   font-size: 28px;
   font-weight: 900;
-  color: #0f172a;
+  color: var(--title-color);
 }
 
 .hint {
@@ -46,15 +46,20 @@
 .loadMore {
   padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.14);
-  background: #fff;
+  border: 1px solid var(--border);
+  background: var(--btn-bg);
   font-weight: 800;
   cursor: pointer;
+  color: var(--btn-text);
 }
 
 .loadMore:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.loadMore:hover {
+  background: var(--btn-bg-hover);
 }
 
 @media (max-width: 1200px) {
