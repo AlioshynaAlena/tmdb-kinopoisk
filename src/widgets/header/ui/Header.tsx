@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import { routes } from "@/app/providers/router/router";
 import styles from "./Header.module.css";
 import { selectThemeMode, toggleThemeMode } from "@/app/providers/theme/themeSlice";
-import {useAppSelector} from "@/shared/api/hooks/useAppSelector.ts";
-import {useAppDispatch} from "@/shared/api/hooks/useAppDispatch.ts";
+import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts";
 import logo from "@/assets/vector/logo.svg";
 
 export function Header() {

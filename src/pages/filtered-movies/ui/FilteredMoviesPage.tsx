@@ -1,14 +1,14 @@
 import styles from "./FilteredMoviesPage.module.css";
-import { FiltersPanel } from "@/widgets/filters-panel/ui/FiltersPanel";
-import { selectFilters } from "@/widgets/filters-panel/model/selectors";
+import { FiltersPanel } from "@/features/filters/ui/FiltersPanel";
+import { selectFilters } from "@/features/filters/model/selectors";
 import { useDiscoverMoviesQuery } from "@/entities/movie/api/tmdbMovieApi";
 import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
-import {useAppSelector} from "@/shared/api/hooks/useAppSelector.ts";
+import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import {
   LinearProgress
-} from "@/shared/api/ui/LinearProgress/LinearProgress";
+} from "@/shared/ui/LinearProgress/LinearProgress";
 
 export function FilteredMoviesPage() {
   const filters = useAppSelector(selectFilters);

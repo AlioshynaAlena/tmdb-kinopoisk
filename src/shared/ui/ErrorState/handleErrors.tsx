@@ -1,8 +1,8 @@
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import {errorToast} from "@/shared/api/ui/ErrorState/errorToast.ts";
+import {errorToast} from "@/shared/ui/ErrorState/errorToast.ts";
 import {
   isErrorWithProperty
-} from "@/shared/api/ui/ErrorState/isErrorWithProperty.ts";
+} from "@/shared/ui/ErrorState/isErrorWithProperty.ts";
 
 export const handleErrors = (error: FetchBaseQueryError) => {
   if (error) {

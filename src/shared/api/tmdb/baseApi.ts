@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {handleErrors} from "@/shared/api/ui/ErrorState/handleErrors.tsx";
+import {handleErrors} from "@/shared/ui/ErrorState/handleErrors.tsx";
 
 
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";

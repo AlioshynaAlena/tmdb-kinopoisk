@@ -7,7 +7,7 @@ import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
 import { useGetSearchMoviesInfiniteQuery } from "@/entities/movie/api/tmdbMovieApi";
 import {
   LinearProgress
-} from "@/shared/api/ui/LinearProgress/LinearProgress.tsx";
+} from "@/shared/ui/LinearProgress/LinearProgress.tsx";
 
 function getQueryFromUrl(sp: URLSearchParams) {
   return (sp.get("query") ?? "").trim();

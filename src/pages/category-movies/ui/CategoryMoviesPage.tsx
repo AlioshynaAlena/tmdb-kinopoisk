@@ -3,12 +3,12 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import styles from "./CategoryMoviesPage.module.css";
-import { useCategoryMovies } from "@/shared/api/hooks/useCategoryMovies";
+import { useCategoryMovies } from "@/shared/lib/hooks/useCategoryMovies";
 import type { Category } from "@/entities/movie/api/tmdbMovieApi";
 import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
 import {
   LinearProgress
-} from "@/shared/api/ui/LinearProgress/LinearProgress";
+} from "@/shared/ui/LinearProgress/LinearProgress";
 
 const CATEGORY_TABS: Array<{ value: Category; label: string }> = [
   { value: "popular", label: "Popular" },

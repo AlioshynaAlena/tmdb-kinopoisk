@@ -1,4 +1,4 @@
-import { useCategoryMovies } from "@/shared/api/hooks/useCategoryMovies";
+import { useCategoryMovies } from "@/shared/lib/hooks/useCategoryMovies";
 import styles from "./MainPage.module.css";
 import {MovieSection} from "@/widgets/movies-section/ui/MovieSection.tsx";
 import {MainHero} from "@/widgets/main-hero/ui/MainHero.tsx";

@@ -1,14 +1,14 @@
 import s from "./FiltersPanel.module.css";
 import { useCallback } from "react";
-import { selectFilters } from "../model/selectors";
-import { resetFilters, updateFilters } from "../model/filtersSlice";
+import { selectFilters } from "@/features/filters/model/selectors";
+import { resetFilters, updateFilters } from "@/features/filters/model/filtersSlice";
 import type { SortBy } from "@/entities/movie/model/types";
-import { useDebouncedValue } from "@/widgets/filters-panel/lib/useDebouncedValue";
-import { SortSelect } from "@/widgets/filters-panel/ui/SortSelect";
-import { RatingRange } from "@/widgets/filters-panel/ui/RatingRange";
-import { GenreMultiSelect } from "@/widgets/filters-panel/ui/GenreMultiSelect";
-import {useAppDispatch} from "@/shared/api/hooks/useAppDispatch.ts";
-import {useAppSelector} from "@/shared/api/hooks/useAppSelector.ts";
+import { useDebouncedValue } from "@/features/filters/lib/useDebouncedValue";
+import { SortSelect } from "@/features/filters/ui/SortSelect";
+import { RatingRange } from "@/features/filters/ui/RatingRange";
+import { GenreMultiSelect } from "@/features/filters/ui/GenreMultiSelect";
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts";
+import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
 
 export function FiltersPanel() {
   const dispatch = useAppDispatch();

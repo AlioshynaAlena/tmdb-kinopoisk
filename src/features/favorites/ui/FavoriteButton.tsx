@@ -1,8 +1,8 @@
 import styles from "./FavoriteButton.module.css";
 import { toggleFavorite, selectIsFavorite } from "@/features/favorites/model/favoritesSlice";
 import type { MovieListItem } from "@/entities/movie/model/types";
-import {useAppSelector} from "@/shared/api/hooks/useAppSelector.ts";
-import {useAppDispatch} from "@/shared/api/hooks/useAppDispatch.ts";
+import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts";
 
 type Props = {
   movie: MovieListItem;

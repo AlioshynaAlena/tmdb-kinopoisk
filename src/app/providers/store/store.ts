@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {baseApi} from "@/shared/api/tmdb/baseApi.ts";
 import {setupListeners} from "@reduxjs/toolkit/query";
-import {filtersReducer} from "@/widgets/filters-panel/model/filtersSlice.ts";
+import {filtersReducer} from "@/features/filters/model/filtersSlice.ts";
 import {
   favoritesReducer,
   favoritesSlice,
