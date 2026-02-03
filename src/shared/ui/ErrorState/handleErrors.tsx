@@ -28,6 +28,7 @@ export const handleErrors = (error: FetchBaseQueryError) => {
       default:
         if (error.status >= 500 && error.status < 600) {
           errorToast("Server error occurred. Try again later");
+          break;
         }
         errorToast("Some error occurred");
     }
