@@ -1,5 +1,5 @@
 import s from "./FiltersPanel.module.css";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { selectFilters } from "@/features/filters/model/selectors";
 import { resetFilters, updateFilters } from "@/features/filters/model/filtersSlice";
 import type { DiscoverParams, SortBy } from "@/entities/movie/model/types";
@@ -13,6 +13,10 @@ import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
 export function FiltersPanel() {
   const dispatch = useAppDispatch();
   const filters = useAppSelector(selectFilters);
+  const [rating, setRating] = useState({
+    min: filters["vote_average.gte"] ?? 0,
+    max: filters["vote_average.lte"] ?? 10,
+  });
 
   const update = useCallback(
     (patch: Partial<DiscoverParams>) => dispatch(updateFilters(patch)),
@@ -30,7 +34,10 @@ export function FiltersPanel() {
   }, 200);
 
   const handleSortChange = (sort_by: SortBy) => update({ sort_by, page: 1 });
-  const handleRatingChange = (min: number, max: number) => debouncedUpdateRating(min, max);
+  const handleRatingChange = (min: number, max: number) => {
+    setRating({ min, max });
+    debouncedUpdateRating(min, max);
+  };
 
   return (
     <aside className={s.panel}>
@@ -38,18 +45,19 @@ export function FiltersPanel() {
 
       <SortSelect value={(filters.sort_by ?? "popularity.desc") as SortBy} onChange={handleSortChange} />
 
-      <RatingRange
-        key={`${filters["vote_average.gte"] ?? 0}-${filters["vote_average.lte"] ?? 10}`}
-        minRating={filters["vote_average.gte"] ?? 0}
-        maxRating={filters["vote_average.lte"] ?? 10}
-        onRatingChange={handleRatingChange}
-      />
+      <RatingRange minRating={rating.min} maxRating={rating.max} onRatingChange={handleRatingChange} />
 
       <section className={s.tags}>
         <GenreMultiSelect />
       </section>
 
-      <button className={s.reset} onClick={reset}>
+      <button
+        className={s.reset}
+        onClick={() => {
+          reset();
+          setRating({ min: 0, max: 10 });
+        }}
+      >
         Reset filters
       </button>
     </aside>
