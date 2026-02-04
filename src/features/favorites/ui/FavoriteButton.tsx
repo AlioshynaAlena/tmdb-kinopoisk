@@ -1,5 +1,6 @@
 import styles from "./FavoriteButton.module.css"
 import { toggleFavorite, selectIsFavorite } from "@/features/favorites/model/favoritesSlice"
+import type { MouseEvent } from "react"
 import type { MovieListItem } from "@/entities/movie/model/types"
 import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts"
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts"
@@ -12,7 +13,7 @@ export function FavoriteButton({ movie }: Props) {
   const dispatch = useAppDispatch()
   const isFavorite = useAppSelector(selectIsFavorite(movie.id))
 
-  const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleToggle = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
     dispatch(
       toggleFavorite({
