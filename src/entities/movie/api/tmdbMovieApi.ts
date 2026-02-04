@@ -22,7 +22,7 @@ function clampPage(page?: number) {
 export const tmdbMovieApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getCategoryMovies: build.query<MoviesListResponse, { category: Category; params?: MoviesCategoryParams }>({
-      query: ({ category, params }: { category: Category; params: MoviesCategoryParams }) => {
+      query: ({ category, params }) => {
         return {
           method: "get",
           url: `/movie/${category}`,
