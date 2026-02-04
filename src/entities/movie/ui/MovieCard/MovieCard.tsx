@@ -16,8 +16,22 @@ export function MovieCard({ movie }: Props) {
     navigate(`/movie/${movie.id}`)
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      openDetails()
+    }
+  }
+
   return (
-    <article className={styles.card} onClick={openDetails} role="button" tabIndex={0}>
+    <article
+      className={styles.card}
+      onClick={openDetails}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`Open details for ${movie.title}`}
+    >
       <div className={styles.posterWrap}>
         <MoviePoster posterPath={movie.poster_path} title={movie.title} />
 
