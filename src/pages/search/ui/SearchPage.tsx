@@ -14,7 +14,7 @@ function getQueryFromUrl(sp: URLSearchParams) {
 }
 
 export function SearchPage() {
-  const [sp, setSp] = useSearchParams();
+  const [sp] = useSearchParams();
   const query = getQueryFromUrl(sp);
   const skip = query.length === 0;
 
@@ -32,23 +32,6 @@ export function SearchPage() {
 
   const loading = isLoading || isFetching;
   const movies = (data?.pages ?? []).flatMap((p) => p.results);
-
-  const onSearch = (value: string) => {
-    const q = value.trim();
-    const next = new URLSearchParams(sp);
-
-    if (q) next.set("query", q);
-    else next.delete("query");
-
-    setSp(next, { replace: true });
-  };
-
-  const onClear = () => {
-    const next = new URLSearchParams(sp);
-    next.delete("query");
-    setSp(next, { replace: true });
-  };
-
   const noResults = !loading && !skip && movies.length === 0;
 
   return (
@@ -63,12 +46,7 @@ export function SearchPage() {
         )}
       </div>
 
-      <SearchForm
-        initialValue={query}
-        disabled={loading}
-        onSearch={onSearch}
-        onClear={onClear}
-      />
+      <SearchForm />
 
       {skip && (
         <p className={styles.hint}>Enter a movie title to start searching</p>

@@ -1,46 +1,45 @@
-import { useEffect, useState, type FormEvent } from "react";
+import {type FormEvent, useState} from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./SearchForm.module.css";
 
-type Props = {
-  initialValue: string;
-  disabled?: boolean;
-  onSearch: (value: string) => void;
-  onClear: () => void;
-};
+export function SearchForm() {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
 
-export function SearchForm({ initialValue, disabled, onSearch, onClear }: Props) {
-  const [value, setValue] = useState(initialValue);
+  const initialQuery = searchParams.get("query") ?? ""
+  const [value, setValue] = useState(initialQuery);
 
-  useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
 
-  const submit = (e: FormEvent) => {
-    e.preventDefault();
-    onSearch(value);
-  };
+    const trimmed = value.trim()
+    if (!trimmed) return
 
-  const isEmpty = value.trim().length === 0;
+    navigate(`/search?query=${encodeURIComponent(trimmed)}`)
+  }
+
+  const handleChange = (nextValue: string) => {
+    setValue(nextValue);
+
+    if (nextValue === "") {
+      navigate("/search")
+    }
+  }
+
 
   return (
-    <form className={styles.form} onSubmit={submit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input
         className={styles.input}
         type="search"
-        placeholder="Search movies..."
+        placeholder="Search for a movie..."
         value={value}
-        disabled={disabled}
-        onChange={(e) => {
-          const v = e.target.value;
-          setValue(v);
-
-          if (v === "") onClear();
-        }}
+        onChange={(e) => handleChange(e.target.value)}
       />
 
-      <button className={styles.button} type="submit" disabled={disabled || isEmpty}>
+      <button type="submit" className={styles.submit} disabled={!value.trim()}>
         Search
       </button>
     </form>
-  );
+  )
 }
