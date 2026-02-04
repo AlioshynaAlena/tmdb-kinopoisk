@@ -1,9 +1,9 @@
-import s from "./FavoritesPage.module.css";
-import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
-import { useFavoritesMovies } from "@/shared/lib/hooks/useFavoritesMovies";
+import s from "./FavoritesPage.module.css"
+import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard"
+import { useFavoritesMovies } from "@/shared/lib/hooks/useFavoritesMovies"
 
 export function FavoritesPage() {
-  const favorites = useFavoritesMovies();
+  const favorites = useFavoritesMovies()
 
   const moviesForCard = favorites.map((f) => ({
     id: f.id,
@@ -11,7 +11,7 @@ export function FavoritesPage() {
     poster_path: f.posterUrl,
     vote_average: f.voteAverage,
     release_date: "",
-  }));
+  }))
 
   return (
     <div className={`container ${s.page}`}>
@@ -27,5 +27,5 @@ export function FavoritesPage() {
         <div className={s.empty}>Add movies to favorites to see them on this page.</div>
       )}
     </div>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import styles from "./CastBlock.module.css";
-import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts";
+import styles from "./CastBlock.module.css"
+import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts"
 
 
 type CastItem = {
@@ -14,10 +14,10 @@ type Props = {
   loading?: boolean;
 };
 
-const PROFILE_PLACEHOLDER = "https://placehold.co/185x278?text=No+Photo";
+const PROFILE_PLACEHOLDER = "https://placehold.co/185x278?text=No+Photo"
 
 export function CastBlock({ cast, loading }: Props) {
-  const top6 = (cast ?? []).slice(0, 6);
+  const top6 = (cast ?? []).slice(0, 6)
 
   return (
     <section className={styles.block}>
@@ -25,7 +25,7 @@ export function CastBlock({ cast, loading }: Props) {
 
       <div className={styles.grid}>
         {top6.map((c) => {
-          const photo = c.profile_path ? getImageUrl(c.profile_path, "w185") : PROFILE_PLACEHOLDER;
+          const photo = c.profile_path ? getImageUrl(c.profile_path, "w185") : PROFILE_PLACEHOLDER
 
           return (
             <div key={c.id} className={styles.card}>
@@ -35,11 +35,11 @@ export function CastBlock({ cast, loading }: Props) {
                 <div className={styles.role}>{c.character || "—"}</div>
               </div>
             </div>
-          );
+          )
         })}
 
         {!loading && top6.length === 0 && <div className={styles.empty}>No cast info.</div>}
       </div>
     </section>
-  );
+  )
 }

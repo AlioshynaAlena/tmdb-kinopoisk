@@ -1,22 +1,22 @@
-import { useSearchParams } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import styles from "./SearchPage.module.css";
-import { SearchForm } from "@/features/search-movie/ui/SearchForm";
-import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
-import { useGetSearchMoviesInfiniteQuery } from "@/entities/movie/api/tmdbMovieApi";
+import { useSearchParams } from "react-router-dom"
+import Skeleton from "react-loading-skeleton"
+import "react-loading-skeleton/dist/skeleton.css"
+import styles from "./SearchPage.module.css"
+import { SearchForm } from "@/features/search-movie/ui/SearchForm"
+import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard"
+import { useGetSearchMoviesInfiniteQuery } from "@/entities/movie/api/tmdbMovieApi"
 import {
   LinearProgress
-} from "@/shared/ui/LinearProgress/LinearProgress.tsx";
+} from "@/shared/ui/LinearProgress/LinearProgress.tsx"
 
 function getQueryFromUrl(sp: URLSearchParams) {
-  return (sp.get("query") ?? "").trim();
+  return (sp.get("query") ?? "").trim()
 }
 
 export function SearchPage() {
-  const [sp] = useSearchParams();
-  const query = getQueryFromUrl(sp);
-  const skip = query.length === 0;
+  const [sp] = useSearchParams()
+  const query = getQueryFromUrl(sp)
+  const skip = query.length === 0
 
   const {
     data,
@@ -28,11 +28,11 @@ export function SearchPage() {
   } = useGetSearchMoviesInfiniteQuery(
     { query, language: "en-US" },
     { skip }
-  );
+  )
 
-  const loading = isLoading || isFetching;
-  const movies = (data?.pages ?? []).flatMap((p) => p.results);
-  const noResults = !loading && !skip && movies.length === 0;
+  const loading = isLoading || isFetching
+  const movies = (data?.pages ?? []).flatMap((p) => p.results)
+  const noResults = !loading && !skip && movies.length === 0
 
   return (
     <div className={`container ${styles.page}`}>
@@ -100,5 +100,5 @@ export function SearchPage() {
         </>
       )}
     </div>
-  );
+  )
 }

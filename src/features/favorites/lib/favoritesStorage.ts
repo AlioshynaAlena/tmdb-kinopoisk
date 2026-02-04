@@ -1,18 +1,18 @@
-import type { FavoriteMovie } from "../model/favoritesSlice";
+import type { FavoriteMovie } from "../model/favoritesSlice"
 
-export const FAVORITES_LS_KEY = "favorites";
+export const FAVORITES_LS_KEY = "favorites"
 
 export function loadFavorites(): FavoriteMovie[] {
   try {
-    const raw = localStorage.getItem(FAVORITES_LS_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    const raw = localStorage.getItem(FAVORITES_LS_KEY)
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
   } catch {
-    return [];
+    return []
   }
 }
 
 export function saveFavorites(favorites: FavoriteMovie[]) {
-  localStorage.setItem(FAVORITES_LS_KEY, JSON.stringify(favorites));
+  localStorage.setItem(FAVORITES_LS_KEY, JSON.stringify(favorites))
 }

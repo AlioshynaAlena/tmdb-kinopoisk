@@ -1,13 +1,13 @@
-import {type FormEvent, useState} from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import styles from "./SearchForm.module.css";
+import {type FormEvent, useState} from "react"
+import { useNavigate, useSearchParams } from "react-router-dom"
+import styles from "./SearchForm.module.css"
 
 export function SearchForm() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
 
   const initialQuery = searchParams.get("query") ?? ""
-  const [value, setValue] = useState(initialQuery);
+  const [value, setValue] = useState(initialQuery)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -19,7 +19,7 @@ export function SearchForm() {
   }
 
   const handleChange = (nextValue: string) => {
-    setValue(nextValue);
+    setValue(nextValue)
 
     if (nextValue === "") {
       navigate("/search")

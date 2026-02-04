@@ -1,19 +1,19 @@
-import styles from "./FavoriteButton.module.css";
-import { toggleFavorite, selectIsFavorite } from "@/features/favorites/model/favoritesSlice";
-import type { MovieListItem } from "@/entities/movie/model/types";
-import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
-import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts";
+import styles from "./FavoriteButton.module.css"
+import { toggleFavorite, selectIsFavorite } from "@/features/favorites/model/favoritesSlice"
+import type { MovieListItem } from "@/entities/movie/model/types"
+import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts"
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts"
 
 type Props = {
   movie: MovieListItem;
 };
 
 export function FavoriteButton({ movie }: Props) {
-  const dispatch = useAppDispatch();
-  const isFavorite = useAppSelector(selectIsFavorite(movie.id));
+  const dispatch = useAppDispatch()
+  const isFavorite = useAppSelector(selectIsFavorite(movie.id))
 
   const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+    e.stopPropagation()
     dispatch(
       toggleFavorite({
         id: movie.id,
@@ -21,8 +21,8 @@ export function FavoriteButton({ movie }: Props) {
         posterUrl: movie.poster_path ?? null,
         voteAverage: movie.vote_average ?? 0,
       })
-    );
-  };
+    )
+  }
 
   return (
     <button
@@ -34,5 +34,5 @@ export function FavoriteButton({ movie }: Props) {
     >
       {isFavorite ? "❤️" : "🤍"}
     </button>
-  );
+  )
 }

@@ -1,14 +1,14 @@
-import { NavLink } from "react-router-dom";
-import { routes } from "@/app/providers/router/router";
-import styles from "./Header.module.css";
-import { selectThemeMode, toggleThemeMode } from "@/app/providers/theme/themeSlice";
-import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
-import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts";
-import logo from "@/assets/vector/logo.svg";
+import { NavLink } from "react-router-dom"
+import { routes } from "@/app/providers/router/router"
+import styles from "./Header.module.css"
+import { selectThemeMode, toggleThemeMode } from "@/app/providers/theme/themeSlice"
+import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts"
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts"
+import logo from "@/assets/vector/logo.svg"
 
 export function Header() {
-  const themeMode = useAppSelector(selectThemeMode);
-  const dispatch = useAppDispatch();
+  const themeMode = useAppSelector(selectThemeMode)
+  const dispatch = useAppDispatch()
 
   return (
     <header className={styles.header}>
@@ -48,5 +48,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }

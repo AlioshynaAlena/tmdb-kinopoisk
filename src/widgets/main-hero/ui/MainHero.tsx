@@ -1,5 +1,5 @@
-import styles from "./MainHero.module.css";
-import { SearchForm } from "@/features/search-movie/ui/SearchForm.tsx";
+import styles from "./MainHero.module.css"
+import { SearchForm } from "@/features/search-movie/ui/SearchForm.tsx"
 
 
 
@@ -30,5 +30,5 @@ export function MainHero({ backdropUrl }: Props) {
         <SearchForm />
       </div>
     </section>
-  );
+  )
 }

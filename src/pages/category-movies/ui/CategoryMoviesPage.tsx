@@ -1,98 +1,98 @@
-import { useCallback, useEffect, useMemo } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import styles from "./CategoryMoviesPage.module.css";
-import { useCategoryMovies } from "@/shared/lib/hooks/useCategoryMovies";
-import type { Category } from "@/entities/movie/api/tmdbMovieApi";
-import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard";
+import { useCallback, useEffect, useMemo } from "react"
+import { useNavigate, useParams, useSearchParams } from "react-router-dom"
+import Skeleton from "react-loading-skeleton"
+import "react-loading-skeleton/dist/skeleton.css"
+import styles from "./CategoryMoviesPage.module.css"
+import { useCategoryMovies } from "@/shared/lib/hooks/useCategoryMovies"
+import type { Category } from "@/entities/movie/api/tmdbMovieApi"
+import { MovieCard } from "@/entities/movie/ui/MovieCard/MovieCard"
 import {
   LinearProgress
-} from "@/shared/ui/LinearProgress/LinearProgress";
+} from "@/shared/ui/LinearProgress/LinearProgress"
 
 const CATEGORY_TABS: Array<{ value: Category; label: string }> = [
   { value: "popular", label: "Popular" },
   { value: "top_rated", label: "Top Rated" },
   { value: "upcoming", label: "Upcoming" },
   { value: "now_playing", label: "Now Playing" },
-];
+]
 
 function isCategory(value: string | undefined): value is Category {
-  return value === "popular" || value === "top_rated" || value === "upcoming" || value === "now_playing";
+  return value === "popular" || value === "top_rated" || value === "upcoming" || value === "now_playing"
 }
 
 function getCategoryTitle(category: Category) {
   switch (category) {
     case "popular":
-      return "Popular Movies";
+      return "Popular Movies"
     case "top_rated":
-      return "Top Rated Movies";
+      return "Top Rated Movies"
     case "upcoming":
-      return "Upcoming Movies";
+      return "Upcoming Movies"
     case "now_playing":
-      return "Now Playing Movies";
+      return "Now Playing Movies"
   }
 }
 
 const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n))
 
 export function CategoryMoviesPage() {
-  const navigate = useNavigate();
-  const params = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate()
+  const params = useParams()
+  const [searchParams, setSearchParams] = useSearchParams()
 
 
-  const category: Category = isCategory(params.category) ? params.category : "popular";
+  const category: Category = isCategory(params.category) ? params.category : "popular"
 
-  const rawPage = searchParams.get("page");
-  const pageFromUrl = Number(rawPage ?? "1");
-  const page = Number.isFinite(pageFromUrl) ? clamp(Math.trunc(pageFromUrl), 1, 500) : 1;
+  const rawPage = searchParams.get("page")
+  const pageFromUrl = Number(rawPage ?? "1")
+  const page = Number.isFinite(pageFromUrl) ? clamp(Math.trunc(pageFromUrl), 1, 500) : 1
 
 
-  const { data, isLoading, isFetching } = useCategoryMovies(category, { page });
+  const { data, isLoading, isFetching } = useCategoryMovies(category, { page })
 
   const totalPages = Math.min(data?.total_pages ?? 1, 500)
-  const title = useMemo(() => getCategoryTitle(category), [category]);
+  const title = useMemo(() => getCategoryTitle(category), [category])
 
   const setPageInUrl = useCallback(
     (nextPage: number) => {
-      const sp = new URLSearchParams(searchParams);
-      sp.set("page", String(nextPage));
-      setSearchParams(sp, { replace: true });
+      const sp = new URLSearchParams(searchParams)
+      sp.set("page", String(nextPage))
+      setSearchParams(sp, { replace: true })
     },
     [searchParams, setSearchParams]
-  );
+  )
 
   const handleChangeCategory = (next: Category) => {
-    navigate(`/category/${next}?page=1`);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    navigate(`/category/${next}?page=1`)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
   const handlePrev = () => {
-    const nextPage = clamp(page - 1, 1, totalPages);
-    setPageInUrl(nextPage);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    const nextPage = clamp(page - 1, 1, totalPages)
+    setPageInUrl(nextPage)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
   const handleNext = () => {
-    const nextPage = clamp(page + 1, 1, totalPages);
-    setPageInUrl(nextPage);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    const nextPage = clamp(page + 1, 1, totalPages)
+    setPageInUrl(nextPage)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
-  const loading = isLoading || isFetching;
+  const loading = isLoading || isFetching
 
   useEffect(() => {
-    if (rawPage == null) return;
-    const isInvalid = !Number.isFinite(pageFromUrl) || Math.trunc(pageFromUrl) !== page;
-    if (isInvalid) setPageInUrl(page);
-  }, [rawPage, pageFromUrl, page, setPageInUrl]);
+    if (rawPage == null) return
+    const isInvalid = !Number.isFinite(pageFromUrl) || Math.trunc(pageFromUrl) !== page
+    if (isInvalid) setPageInUrl(page)
+  }, [rawPage, pageFromUrl, page, setPageInUrl])
 
   return (
     <div className={`container ${styles.page}`}>
       <div className={styles.tabs}>
         {CATEGORY_TABS.map((t) => {
-          const active = t.value === category;
+          const active = t.value === category
           return (
             <button
               key={t.value}
@@ -102,7 +102,7 @@ export function CategoryMoviesPage() {
             >
               {t.label}
             </button>
-          );
+          )
         })}
       </div>
 
@@ -157,5 +157,5 @@ export function CategoryMoviesPage() {
         </div>
       )}
     </div>
-  );
+  )
 }
