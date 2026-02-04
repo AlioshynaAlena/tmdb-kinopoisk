@@ -29,8 +29,7 @@ export function MovieInfoBlock({ movie, loading }: Props) {
 
   return (
     <section className={styles.hero}>
-      {backdropUrl && <div className={styles.backdrop} style={{ backgroundImage: `url(${backdropUrl})` }} />}
-      <div className={styles.overlay} />
+      {backdropUrl && <div style={{ backgroundImage: `url(${backdropUrl})` }} />}
 
       <div className={styles.content}>
         <img className={styles.poster} src={posterUrl} alt={movie?.title ?? "Poster"} />
