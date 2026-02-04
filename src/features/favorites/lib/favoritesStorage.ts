@@ -14,5 +14,9 @@ export function loadFavorites(): FavoriteMovie[] {
 }
 
 export function saveFavorites(favorites: FavoriteMovie[]) {
-  localStorage.setItem(FAVORITES_LS_KEY, JSON.stringify(favorites))
+  try {
+    localStorage.setItem(FAVORITES_LS_KEY, JSON.stringify(favorites))
+  } catch (err) {
+    console.warn("Failed to save favorites.", err)
+  }
 }
