@@ -1,9 +1,10 @@
 import {type FormEvent, useState} from "react"
-import { useNavigate, useSearchParams } from "react-router-dom"
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
 import styles from "./SearchForm.module.css"
 
 export function SearchForm() {
   const navigate = useNavigate()
+  const location = useLocation()
   const [searchParams] = useSearchParams()
 
   const initialQuery = searchParams.get("query") ?? ""
@@ -21,7 +22,7 @@ export function SearchForm() {
   const handleChange = (nextValue: string) => {
     setValue(nextValue)
 
-    if (nextValue === "") {
+    if (nextValue === "" && location.pathname.startsWith("/search")) {
       navigate("/search")
     }
   }
