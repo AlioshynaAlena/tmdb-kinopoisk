@@ -22,11 +22,11 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     toggleFavorite(state, action: PayloadAction<FavoriteMovie>) {
-      const m = action.payload
-      const idx = state.items.findIndex((x) => x.id === m.id)
+      const movie = action.payload
+      const existingIndex = state.items.findIndex((item) => item.id === movie.id)
 
-      if (idx >= 0) state.items.splice(idx, 1)
-      else state.items.push(m)
+      if (existingIndex >= 0) state.items.splice(existingIndex, 1)
+      else state.items.push(movie)
 
       saveFavorites(state.items)
     },

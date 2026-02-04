@@ -1,10 +1,8 @@
-import { NavLink } from "react-router-dom"
-import { routes } from "@/app/providers/router/router"
 import styles from "./Header.module.css"
 import { selectThemeMode, toggleThemeMode } from "@/app/providers/theme/themeSlice"
 import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts"
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts"
-import logo from "@/assets/vector/logo.svg"
+import { NavMenu } from "@/widgets/header/ui/NavMenu"
 
 export function Header() {
   const themeMode = useAppSelector(selectThemeMode)
@@ -13,27 +11,7 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <NavLink to={routes.root()} className={styles.logo}>
-          <img src={logo} alt="Logo" className={styles.logoImage} />
-        </NavLink>
-
-        <nav className={styles.nav}>
-          <NavLink to={routes.root()} end className={styles.link}>
-            Main
-          </NavLink>
-          <NavLink to={routes.category("popular")} className={styles.link}>
-            Category Movies
-          </NavLink>
-          <NavLink to={routes.filtered()} className={styles.link}>
-            Filtered Movies
-          </NavLink>
-          <NavLink to={routes.search()} className={styles.link}>
-            Search
-          </NavLink>
-          <NavLink to={routes.favorites()} className={styles.link}>
-            Favorites
-          </NavLink>
-        </nav>
+        <NavMenu />
 
         <div className={styles.actions}>
           <button

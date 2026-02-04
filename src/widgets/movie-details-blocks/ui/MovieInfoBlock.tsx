@@ -12,9 +12,9 @@ function getYear(date?: string) {
 
 function formatRuntime(runtime?: number | null) {
   if (!runtime || runtime <= 0) return "—"
-  const h = Math.floor(runtime / 60)
-  const m = runtime % 60
-  return h > 0 ? `${h}h ${m}m` : `${m}m`
+  const hours = Math.floor(runtime / 60)
+  const minutes = runtime % 60
+  return hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`
 }
 
 type Props = {

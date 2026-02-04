@@ -1,18 +1,8 @@
 import styles from "./CastBlock.module.css"
 import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts"
+import type {Props} from "@/entities/person/model/types.ts";
 
 
-type CastItem = {
-  id: number;
-  name: string;
-  character?: string;
-  profile_path?: string | null;
-};
-
-type Props = {
-  cast: CastItem[];
-  loading?: boolean;
-};
 
 const PROFILE_PLACEHOLDER = "https://placehold.co/185x278?text=No+Photo"
 

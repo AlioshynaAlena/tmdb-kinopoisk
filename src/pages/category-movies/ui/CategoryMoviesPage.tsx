@@ -56,9 +56,9 @@ export function CategoryMoviesPage() {
 
   const setPageInUrl = useCallback(
     (nextPage: number) => {
-      const sp = new URLSearchParams(searchParams)
-      sp.set("page", String(nextPage))
-      setSearchParams(sp, { replace: true })
+      const nextParams = new URLSearchParams(searchParams)
+      nextParams.set("page", String(nextPage))
+      setSearchParams(nextParams, { replace: true })
     },
     [searchParams, setSearchParams]
   )

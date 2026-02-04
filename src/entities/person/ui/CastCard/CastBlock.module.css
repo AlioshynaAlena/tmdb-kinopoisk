@@ -64,7 +64,6 @@
   color: var(--text-muted);
 }
 
-/* адаптив */
 @media (max-width: 1200px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));

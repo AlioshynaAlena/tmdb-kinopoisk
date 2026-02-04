@@ -83,8 +83,6 @@
 }
 
 .pageBtn {
-  /*border: 1px solid rgba(0,0,0,0.15);*/
-  /*background: transparent;*/
   padding: 8px 12px;
   border-radius: 10px;
   cursor: pointer;

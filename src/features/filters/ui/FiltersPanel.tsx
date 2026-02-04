@@ -1,5 +1,5 @@
 import s from "./FiltersPanel.module.css"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useState } from "react"
 import { selectFilters } from "@/features/filters/model/selectors"
 import { resetFilters, updateFilters } from "@/features/filters/model/filtersSlice"
 import type { DiscoverParams, SortBy } from "@/entities/movie/model/types"
@@ -13,16 +13,11 @@ import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts"
 export function FiltersPanel() {
   const dispatch = useAppDispatch()
   const filters = useAppSelector(selectFilters)
+
+
   const filtersMin = filters["vote_average.gte"] ?? 0
   const filtersMax = filters["vote_average.lte"] ?? 10
   const [rating, setRating] = useState({ min: filtersMin, max: filtersMax })
-
-  useEffect(() => {
-    if (rating.min !== filtersMin || rating.max !== filtersMax) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setRating({ min: filtersMin, max: filtersMax })
-    }
-  }, [filtersMin, filtersMax, rating.min, rating.max])
 
   const update = useCallback(
     (patch: Partial<DiscoverParams>) => dispatch(updateFilters(patch)),
