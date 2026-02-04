@@ -11,6 +11,7 @@ import {
 import {MovieDetailsPage} from "@/pages/movie-details/ui/MovieDetailsPage.tsx";
 import {SearchPage} from "@/pages/search/ui/SearchPage.tsx";
 import {FavoritesPage} from "@/pages/favorites/ui/FavoritesPage.tsx";
+import {NotFoundPage} from "@/pages/not-found/ui/NotFoundPage.tsx";
 
 
 export const router = createBrowserRouter([
@@ -24,7 +25,7 @@ export const router = createBrowserRouter([
       { path: routes.search(), element: <SearchPage /> },
       { path: routes.favorites(), element: <FavoritesPage /> },
       { path: routes.movie(":movieId"), element: <MovieDetailsPage /> },
-      // { path: "*", element: <NotFoundPage /> },
+      { path: "*", element: <NotFoundPage /> },
     ],
   },
 ]);
