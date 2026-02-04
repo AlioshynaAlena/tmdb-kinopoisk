@@ -1,6 +1,6 @@
 import styles from "./CastBlock.module.css"
 import { getImageUrl } from "@/entities/movie/lib/imageUrl.ts"
-import type { CastItem } from "@/entities/person/model/types.ts"
+import type { CastItem } from "@/entities/movie/model/types.ts"
 
 type Props = {
   cast: CastItem[];
