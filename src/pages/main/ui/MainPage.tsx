@@ -35,7 +35,7 @@ export function MainPage() {
   const randomMovie = results[randomIndex];
 
   const backdropUrl = randomMovie?.backdrop_path
-    ? getImageUrl(randomMovie.backdrop_path, "w780")
+    ? getImageUrl(randomMovie.backdrop_path, "original")
     : undefined;
 
   return (

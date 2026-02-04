@@ -3,7 +3,7 @@
   --text: #0f172a;
   --text-muted: rgba(15, 23, 42, 0.75);
   --border: rgba(15, 23, 42, 0.12);
-  --header-bg: rgba(255, 255, 255, 0.9);
+  --header-bg: #f3f4f6;
   --progress-track: rgba(15, 23, 42, 0.12);
   --progress-bar: rgba(15, 23, 42, 0.45);
 }
