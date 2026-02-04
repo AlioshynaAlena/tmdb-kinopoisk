@@ -5,7 +5,7 @@ import { loadFavorites, saveFavorites } from "../lib/favoritesStorage"
 export type FavoriteMovie = {
   id: number;
   title: string;
-  posterUrl: string | null;
+  posterPath: string | null;
   voteAverage: number;
 };
 

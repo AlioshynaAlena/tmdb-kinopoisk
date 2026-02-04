@@ -8,7 +8,7 @@ export function FavoritesPage() {
   const moviesForCard = favorites.map((f) => ({
     id: f.id,
     title: f.title,
-    poster_path: f.posterUrl,
+    poster_path: f.posterPath,
     vote_average: f.voteAverage,
     release_date: "",
   }))

@@ -7,7 +7,19 @@ export function loadFavorites(): FavoriteMovie[] {
     const raw = localStorage.getItem(FAVORITES_LS_KEY)
     if (!raw) return []
     const parsed = JSON.parse(raw)
-    return Array.isArray(parsed) ? parsed : []
+    if (!Array.isArray(parsed)) return []
+    return parsed.map((item) => {
+      if (item && typeof item === "object") {
+        const posterPath =
+          typeof item.posterPath === "string" || item.posterPath === null
+            ? item.posterPath
+            : typeof item.posterUrl === "string" || item.posterUrl === null
+              ? item.posterUrl
+              : null
+        return { ...item, posterPath }
+      }
+      return item
+    })
   } catch {
     return []
   }

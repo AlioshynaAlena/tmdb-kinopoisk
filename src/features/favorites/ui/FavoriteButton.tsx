@@ -19,7 +19,7 @@ export function FavoriteButton({ movie }: Props) {
       toggleFavorite({
         id: movie.id,
         title: movie.title,
-        posterUrl: movie.poster_path ?? null,
+        posterPath: movie.poster_path ?? null,
         voteAverage: movie.vote_average ?? 0,
       })
     )
