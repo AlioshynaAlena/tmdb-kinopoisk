@@ -16,6 +16,7 @@ export const handleErrors = (error: FetchBaseQueryError) => {
 
       case 400:
       case 401:
+      case 403:
       case 404:
       case 429:
         if (isErrorWithProperty(error.data, "status_message")) {
