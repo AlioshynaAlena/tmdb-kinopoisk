@@ -4,8 +4,3 @@ export type CastItem = {
   character?: string;
   profile_path?: string | null;
 };
-
-export type Props = {
-  cast: CastItem[];
-  loading?: boolean;
-};

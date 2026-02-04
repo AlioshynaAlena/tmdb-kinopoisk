@@ -9,7 +9,7 @@ import {
 } from "@/entities/movie/api/tmdbMovieApi"
 
 import { MovieInfoBlock } from "@/widgets/movie-details-blocks/ui/MovieInfoBlock"
-import { CastBlock } from "@/entities/person/ui/CastCard/CastBlock.tsx"
+import { CastBlock } from "@/widgets/movie-details-blocks/ui/CastBlock.tsx"
 import { SimilarMoviesBlock } from "@/widgets/movie-details-blocks/ui/SimilarMoviesBlock"
 import {
   MovieDetailsSkeleton

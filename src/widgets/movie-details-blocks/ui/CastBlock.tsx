@@ -1,7 +1,11 @@
 import styles from "./CastBlock.module.css"
-import {getImageUrl} from "@/entities/movie/lib/imageUrl.ts"
-import type {Props} from "@/entities/person/model/types.ts";
+import { getImageUrl } from "@/entities/movie/lib/imageUrl.ts"
+import type { CastItem } from "@/entities/person/model/types.ts"
 
+type Props = {
+  cast: CastItem[];
+  loading?: boolean;
+}
 
 
 const PROFILE_PLACEHOLDER = "https://placehold.co/185x278?text=No+Photo"
