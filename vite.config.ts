@@ -4,8 +4,8 @@ import path from "path"
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Use the GitHub Pages base only for production builds.
-  base: mode === "production" ? "/tmdb-kinopoisk/" : "/",
+  // Use the GitHub Pages base only for production builds outside Vercel.
+  base: process.env.VERCEL ? "/" : mode === "production" ? "/tmdb-kinopoisk/" : "/",
   plugins: [react()],
   resolve: {
     alias: {
